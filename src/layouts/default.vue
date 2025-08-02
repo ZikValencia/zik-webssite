@@ -1,11 +1,14 @@
 <template>
   <v-main>
-    <router-view />
+    <Header />
+    <router-view class="main-container" />
   </v-main>
 
   <AppFooter />
 </template>
 
-<script lang="ts" setup>
-  //
-</script>
+<style scoped>
+.main-container {
+  max-width: 1580px;      /* Narrower layout */
+}
+</style>

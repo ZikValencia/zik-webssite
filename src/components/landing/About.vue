@@ -1,55 +1,86 @@
 <template>
-  <v-container class="py-16">
+  <v-container class="">
     <!-- Hero Section -->
-    <v-row align="center" justify="space-between" class="flex-wrap-reverse">
-      <!-- Left Text Content -->
-      <v-col cols="12" md="7">
-        <h1 class="text-h2 font-weight-bold mb-4">Hi, I'm Zik 👋</h1>
+    <v-row align="center" class="flex-wrap-reverse" justify="space-between">
+      <v-col class="text-center" cols="12" md="6">
+        <v-img
+          alt="Zik profile image"
+          class="rounded-circle mx-auto"
+          max-width="500"
+          src="@/assets/image/self.png"
+        />
+      </v-col>
+      <v-col class="d-flex flex-column justify-center" cols="12" md="6">
+        <h1 class="text-h2 font-weight-bold mb-2">
+          Hi, I'm <span class="text-primary">Zik</span> 👋
+        </h1>
+
+        <h2 class="text-h5 text-grey-darken-1 mb-4 font-weight-regular">
+          Filipino full-stack developer based in Japan 🇯🇵
+        </h2>
+
         <p class="text-body-1 text-grey-darken-2 mb-6">
-          Welcome to <strong>ZIK STUDIOS</strong> — my creative and technical playground.
-          I'm a developer, designer, and builder passionate about crafting thoughtful digital
-          experiences. Whether it's scalable backends, pixel-perfect interfaces, or AI-driven tools,
-          I love bringing ideas to life with code.
+          I specialize in building scalable web applications and cloud-native solutions. With a passion for clean architecture and efficient workflows, I create software that delivers real-world impact.
         </p>
 
-        <v-btn color="primary" size="large" class="mt-2" rounded>
-          Check Out My Work
+        <v-btn
+          class="align-self-start"
+          color="primary"
+          elevation="2"
+          rounded
+          size="large"
+          to="/projects"
+          variant="flat"
+        >
+          🚀 Check Out My Work
         </v-btn>
       </v-col>
 
-      <!-- Right Image Content -->
-      <v-col cols="12" md="5" class="text-center">
-        <v-img
-          src="https://via.placeholder.com/400x400.png?text=Zik+Profile"
-          alt="Zik profile image"
-          max-width="300"
-          class="rounded-circle mx-auto"
-        />
-      </v-col>
-    </v-row>
-
-    <!-- Divider -->
-    <v-divider class="my-12" />
-
-    <!-- About Me Section -->
-    <v-row>
-      <v-col cols="12" md="10" class="mx-auto">
-        <h2 class="text-h5 font-weight-bold mb-4">About Me</h2>
-        <p class="text-body-1 text-grey-darken-1">
-          I'm a full-stack developer based in Japan, passionate about turning complex
-          problems into elegant solutions. I specialize in building scalable web platforms
-          with Vue, Go, and modern cloud architectures — and I love automating workflows,
-          optimizing performance, and exploring AI-powered applications.
-          <br /><br />
-          Outside of code, you’ll probably find me exploring side projects, cooking up healthy
-          meals, or diving into new tech trends. I believe in continuous learning, building with purpose,
-          and sharing what I learn along the way.
-        </p>
-      </v-col>
     </v-row>
   </v-container>
+  <v-timeline align="start">
+    <v-timeline-item
+      v-for="(item, i) in items"
+      :key="i"
+      :dot-color="item.color"
+      fill-dot
+      :icon="item.icon"
+    >
+      <v-card>
+        <v-card-title :class="['text-h6', `bg-${item.color}`]">
+          Lorem Ipsum Dolor
+        </v-card-title>
+        <v-card-text class="bg-white text--primary">
+          <p>Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.</p>
+          <v-btn
+            :color="item.color"
+            variant="outlined"
+          >
+            Button
+          </v-btn>
+        </v-card-text>
+      </v-card>
+    </v-timeline-item>
+  </v-timeline>
 </template>
 
 <script lang="ts" setup>
-// No logic needed for this static page
+  const items = [
+    {
+      color: 'red-lighten-2',
+      icon: 'mdi-star',
+    },
+    {
+      color: 'purple-lighten-2',
+      icon: 'mdi-book-variant',
+    },
+    {
+      color: 'green-lighten-1',
+      icon: 'mdi-airballoon',
+    },
+    {
+      color: 'indigo-lighten-2',
+      icon: 'mdi-layers-triple',
+    },
+  ]
 </script>

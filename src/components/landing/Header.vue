@@ -1,33 +1,46 @@
 <template>
-   <v-container class="text-center my-8">
-        <v-row
-            class="mb-4"
-            style="position: sticky; top: 0; z-index: 10; background: white;"
+  <div class="header-wrapper">
+    <!-- Content over the wave -->
+    <v-container class="text-center">
+      <v-img class="mb-4" height="300" src="@/assets/zik-logo.svg" />
+      <v-col cols="12">
+        <v-btn
+          v-for="item in ['Home','Skills', 'Experience', 'Projects', 'More About Me','Contact']"
+          :key="item"
+          class="mx-2 text-h4"
+          size="x-large"
+          :to="`/${item.toLowerCase()}`"
+          variant="text"
         >
-            <v-col cols="12">
-            <v-btn
-                v-for="item in ['Home', 'About', 'Contact']"
-                :key="item"
-                class="mx-2 "
-                size="x-large"
-                :to="`/${item.toLowerCase()}`"
-                variant="text"
-            >
-                {{ item }}
-            </v-btn>
-            </v-col>
-        </v-row>
-        <v-img
-            class="mb-4"
-            height="150"
-            src="@/assets/logo.png"
-        />
-        <h1 class="text-h2 font-weight-bold">ZIK STUDIOS</h1>
-        <div class="text-body-2 font-weight-light mb-n1">Welcome to my website</div>
+          {{ item }}
+        </v-btn>
+      </v-col>
+
     </v-container>
+
+  </div>
 
 </template>
 
 <script lang="ts" setup>
   //
 </script>
+
+<style scoped>
+.header-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.wavy-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 320px;
+  z-index: 0;
+}
+.v-container {
+  position: relative;
+  z-index: 1;
+}
+</style>
