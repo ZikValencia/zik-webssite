@@ -1,67 +1,40 @@
 <template>
   <v-container class="">
     <!-- Hero Section -->
-    <v-row align="center" class="flex-wrap-reverse" justify="space-between">
-      <v-col class="text-center" cols="12" md="6">
-        <v-img
-          alt="Zik profile image"
-          class="rounded-circle mx-auto"
-          max-width="500"
-          src="@/assets/image/self.png"
-        />
+
+    <v-row class="flex-wrap-reverse">
+      <v-spacer />
+      <v-col class="text-center" cols="12" md="4">
+        <div class="glow-container">
+          <v-img
+            alt="Zik profile image"
+            class="glow-image"
+            cover
+            height="auto"
+            src="@/assets/image/self.png"
+            width="500"
+          />
+        </div>
       </v-col>
       <v-col class="d-flex flex-column justify-center" cols="12" md="6">
-        <h1 class="text-h2 font-weight-bold mb-2">
-          Hi, I'm <span class="text-primary">Zik</span> 👋
-        </h1>
+        <v-card class="pa-6" color="teal-darken-4 darken-5" rounded="lg">
 
-        <h2 class="text-h5 text-grey-darken-1 mb-4 font-weight-regular">
-          Filipino full-stack developer based in Japan 🇯🇵
-        </h2>
+          <h1 class="text-h2 font-weight-bold mb-2">
+            Hi, I'm <span class="text-primary">Zik</span> 👋
+          </h1>
 
-        <p class="text-body-1 text-grey-darken-2 mb-6">
-          I specialize in building scalable web applications and cloud-native solutions. With a passion for clean architecture and efficient workflows, I create software that delivers real-world impact.
-        </p>
+          <h2 class="text-h4 text-grey-lighten-1 mb-4 font-weight-regular">
+            Filipino full-stack developer based in Japan 🇯🇵
+          </h2>
 
-        <v-btn
-          class="align-self-start"
-          color="primary"
-          elevation="2"
-          rounded
-          size="large"
-          to="/projects"
-          variant="flat"
-        >
-          🚀 Check Out My Work
-        </v-btn>
-      </v-col>
-
+          <p class="text-h6 text-grey-lighten-1 mb-6">
+            I specialize in building scalable web applications and cloud-native solutions. With a passion for clean architecture and efficient workflows, I create software that delivers real-world impact.
+          </p>
+        </v-card></v-col>
+      <v-spacer />
     </v-row>
+
   </v-container>
-  <v-timeline align="start">
-    <v-timeline-item
-      v-for="(item, i) in items"
-      :key="i"
-      :dot-color="item.color"
-      fill-dot
-      :icon="item.icon"
-    >
-      <v-card>
-        <v-card-title :class="['text-h6', `bg-${item.color}`]">
-          Lorem Ipsum Dolor
-        </v-card-title>
-        <v-card-text class="bg-white text--primary">
-          <p>Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.</p>
-          <v-btn
-            :color="item.color"
-            variant="outlined"
-          >
-            Button
-          </v-btn>
-        </v-card-text>
-      </v-card>
-    </v-timeline-item>
-  </v-timeline>
 </template>
 
 <script lang="ts" setup>
@@ -84,3 +57,25 @@
     },
   ]
 </script>
+
+<style scoped>
+  .glow-container {
+  position: relative;
+  display: inline-block;
+}
+
+.glow-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0, 191, 165, 0.5) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+</style>
