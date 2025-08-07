@@ -1,9 +1,9 @@
 <template>
   <v-divider class="ma-8" />
   <v-container class="text-center py-8">
-    <h1 class="text-h3 font-weight-bold gradient-text">My Tech Stack</h1>
+    <h1 class="text-h3 font-weight-bold gradient-text">My Development Toolkit 🛠️</h1>
     <p class="text-h5  mt-2">
-      Tools and technologies I use to build modern web applications
+      A collection of tools and technologies I use or have worked with
     </p>
   </v-container>
   <v-container class="d-flex  justify-center" fluid>
@@ -37,6 +37,7 @@
       </v-col>
     </v-row>
   </v-container>
+  <v-divider class="ma-8" />
 </template>
 
 <script setup lang="ts">
