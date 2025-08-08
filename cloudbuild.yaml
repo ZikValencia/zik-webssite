@@ -1,0 +1,47 @@
+# Version of Cloud Build
+steps:
+  # Step 1: Install pnpm globally
+  - name: 'gcr.io/cloud-builders/npm'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo "Node.js version:"
+        node -v
+        echo "NPM version:"
+        npm -v
+        echo "Installing pnpm globally..."
+        npm install -g pnpm
+        echo "pnpm version:"
+        pnpm -v
+        echo "Installing dependencies..."
+        cd $DIR/admin_console
+        pnpm install
+
+  # Step 2: Build the application
+  - name: 'gcr.io/cloud-builders/npm'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo "Building the application..."
+        cd $DIR/admin_console
+        pnpm run build
+        echo "Build completed"
+
+  # Step 3: Deploy the files to Google Cloud Storage
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - 'gsutil'
+      - '-m'
+      - 'rsync'
+      - '-r'
+      - 'admin_console/dist/'
+      - 'gs://your-bucket-name'  # Change to your bucket name
+
+# If you want to store Docker images (optional, if needed)
+images:
+  - 'gcr.io/$PROJECT_ID/my-app-image'
+
+# Timeout configuration (Optional)
+timeout: '1200s'
