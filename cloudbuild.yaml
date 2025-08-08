@@ -37,9 +37,11 @@ steps:
       - 'rsync'
       - '-r'
       - 'admin_console/dist/'
-      - 'gs://zikvalencia.com'  # Change to your bucket name
-
-
+      - 'gs://zikvalencia.com'
 
 # Timeout configuration (Optional)
 timeout: '1200s'
+
+# Logging configuration (Optional, Cloud Logging only)
+options:
+  logging: CLOUD_LOGGING_ONLY  # Log to Cloud Logging only
