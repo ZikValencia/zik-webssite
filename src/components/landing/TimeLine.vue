@@ -1,5 +1,4 @@
 <template>
-
   <v-container class="text-center py-8" max-width="1230px">
     <h1 class="text-h3 font-weight-bold gradient-text">My Journey 🚀</h1>
     <p class="text-h5  mt-2">
@@ -45,7 +44,7 @@
     {
       description: 'Graduated with a degree in Information Technology, Bachelor of Science in Information Technology',
       place: 'Silliman University, Dumaguete City.',
-      year: '🎓 2016– 2021',
+      year: ' 2016– 2021',
     },
     {
       description: 'While finishing my degree, worked as a customer service representative. Developing strong communication skills and a customer-centric mindset.',

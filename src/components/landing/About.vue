@@ -18,19 +18,26 @@
       </v-col>
       <v-col class="d-flex flex-column justify-center" cols="12" md="6">
         <v-card class="pa-6" color="teal-darken-4 darken-5" rounded="lg">
-
-          <h1 class="text-h2 font-weight-bold mb-2">
-            Hi, I'm <span class="text-primary">Zik</span> 👋
+          <h1 class="text-h2 font-weight-bold mb-1">
+            Hi, I'm <span class="text-primary">Exequiel </span> 👋
           </h1>
 
-          <h2 class="text-h4 text-grey-lighten-1 mb-4 font-weight-regular">
-            Filipino full-stack developer based in Japan 🇯🇵
+          <div class="text-h5 text-grey-lighten-1 mb-4">
+            AKA <b class="text-primary mt-4">Zik</b>
+          </div>
+
+          <h2 class="text-h5 text-grey-lighten-1 mb-4 font-weight-regular">
+            Filipino full-stack developer based in Japan 🇯🇵 | 🇵🇭
           </h2>
 
-          <p class="text-h6 text-grey-lighten-1 mb-6">
-            I specialize in building scalable web applications and cloud-native solutions. With a passion for clean architecture and efficient workflows, I create software that delivers real-world impact.
+          <p class="text-h6 mb-6">
+            I specialize in building scalable web and mobile applications, as well as cloud-native solutions.
+            With a passion for clean architecture and efficient workflows, I develop software that delivers
+            meaningful, real-world results.
           </p>
-        </v-card></v-col>
+        </v-card>
+      </v-col>
+
       <v-spacer />
     </v-row>
 
