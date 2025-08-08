@@ -12,10 +12,9 @@ declare module 'vue' {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
     ContactInfo: typeof import('./components/landing/ContactInfo.vue')['default']
     Header: typeof import('./components/landing/Header.vue')['default']
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Skills: typeof import('./components/landing/Skills.vue')['default']
-    TimeLine: typeof import('./components/landing/TimeLine.vue')['default']
+    TimeLineSection: typeof import('./components/landing/TimeLineSection.vue')['default']
   }
 }

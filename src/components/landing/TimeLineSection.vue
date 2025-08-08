@@ -11,12 +11,11 @@
       v-for="(year, i) in years"
       :key="i"
       class="my-12"
-      :dot-color="year.color"
       size="small"
     >
       <template #opposite>
         <div
-          :class="`pt-1 headline font-weight-bold text-${year.color} text-${i % 2 === 0 ? 'right' : 'left'} text-h6`"
+          :class="`pt-1 headline font-weight-bold  text-${i % 2 === 0 ? 'right' : 'left'} text-h6`"
           v-text="year.year"
         />
       </template>
@@ -39,7 +38,7 @@
   <v-divider class="ma-8" />
 </template>
 
-<script setup>
+<script setup lang="ts">
   const years = [
     {
       description: 'Graduated with a degree in Information Technology, Bachelor of Science in Information Technology',
