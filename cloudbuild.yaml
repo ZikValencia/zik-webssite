@@ -37,11 +37,9 @@ steps:
       - 'rsync'
       - '-r'
       - 'admin_console/dist/'
-      - 'gs://your-bucket-name'  # Change to your bucket name
+      - 'gs://zikvalencia.com'  # Change to your bucket name
 
-# If you want to store Docker images (optional, if needed)
-images:
-  - 'gcr.io/$PROJECT_ID/my-app-image'
+
 
 # Timeout configuration (Optional)
 timeout: '1200s'
