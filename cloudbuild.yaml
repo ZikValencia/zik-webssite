@@ -1,4 +1,3 @@
-# Version of Cloud Build
 steps:
   # Step 1: Install pnpm globally
   - name: 'gcr.io/cloud-builders/npm'
@@ -15,6 +14,7 @@ steps:
         echo "pnpm version:"
         pnpm -v
         echo "Installing dependencies..."
+        cd $DIR  # Replace with your project's directory if needed
         pnpm install
 
   # Step 2: Build the application
@@ -24,6 +24,7 @@ steps:
       - '-c'
       - |
         echo "Building the application..."
+        cd $DIR  # Replace with your project's directory if needed
         pnpm run build
         echo "Build completed"
 
@@ -34,8 +35,8 @@ steps:
       - '-m'
       - 'rsync'
       - '-r'
-      - 'dist/'
-      - 'gs://zikvalencia.com'  # Change to your bucket name
+      - '$DIR'  # Deploy the entire project directory or adjust path
+      - 'gs://zikvalencia.com/'  # Replace with your bucket name
 
 # Timeout configuration (Optional)
 timeout: '1200s'
