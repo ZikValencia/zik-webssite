@@ -15,7 +15,6 @@ steps:
         echo "pnpm version:"
         pnpm -v
         echo "Installing dependencies..."
-        cd $DIR/admin_console
         pnpm install
 
   # Step 2: Build the application
@@ -25,7 +24,6 @@ steps:
       - '-c'
       - |
         echo "Building the application..."
-        cd $DIR/admin_console
         pnpm run build
         echo "Build completed"
 
@@ -36,8 +34,8 @@ steps:
       - '-m'
       - 'rsync'
       - '-r'
-      - 'admin_console/dist/'
-      - 'gs://zikvalencia.com'
+      - 'dist/'
+      - 'gs://zikvalencia.com'  # Change to your bucket name
 
 # Timeout configuration (Optional)
 timeout: '1200s'
