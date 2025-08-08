@@ -1,5 +1,5 @@
 steps:
-  # Step 1: Install pnpm globally
+  # Step 1: Install pnpm globally and install dependencies
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'bash'
     args:
@@ -14,7 +14,8 @@ steps:
         echo "pnpm version:"
         pnpm -v
         echo "Installing dependencies..."
-        pnpm install
+        cd $DIR
+        pnpm install  # Make sure dependencies are installed
 
   # Step 2: Build the application
   - name: 'gcr.io/cloud-builders/npm'
@@ -23,7 +24,8 @@ steps:
       - '-c'
       - |
         echo "Building the application..."
-        pnpm run build
+        cd $DIR  # Navigate to the directory where your project is
+        pnpm run build  # This will run the build script in package.json
         echo "Build completed"
 
   # Step 3: Deploy the files to Google Cloud Storage
@@ -33,8 +35,8 @@ steps:
       - '-m'
       - 'rsync'
       - '-r'
-      - 'dist/'  # Default output directory for Vite
-      - 'gs://zikvalencia.com/'  # Change to your bucket name
+      - 'dist/'  # Adjust if your build folder is not 'dist'
+      - 'gs://zikvalencia.com/'  # Your GCS bucket
 
 # Timeout configuration (Optional)
 timeout: '1200s'
