@@ -33,4 +33,8 @@ router.isReady().then(() => {
   localStorage.removeItem('vuetify:dynamic-reload')
 })
 
+router.afterEach(to => {
+  const base = import.meta.env.VITE_APP_TITLE || 'Zik Website'
+  document.title = to.meta?.title ? `${to.meta.title} | ${base}` : base
+})
 export default router

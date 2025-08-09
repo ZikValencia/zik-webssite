@@ -1,0 +1,20 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Shared Gradient -->
+    <linearGradient id="gradientZ" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#42b883" />
+      <stop offset="100%" stop-color="#35495e" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Circle with Gradient Stroke -->
+  <circle cx="100" cy="100" r="95" stroke="url(#gradientZ)" stroke-width="10" fill="none" />
+
+  <!-- Z Path with Gradient Stroke -->
+  <path 
+    d="M 60 60 L 140 60 L 60 140 L 140 140" 
+    fill="none" 
+    stroke="url(#gradientZ)" 
+    stroke-width="28" 
+    stroke-linecap="square" />
+</svg>
