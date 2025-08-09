@@ -17,10 +17,9 @@
       <v-col
         v-for="tech in techStack"
         :key="tech.name"
-        cols="4"
-        md="6"
-        sm="12"
-        xs="12"
+        cols="12"
+        md="4"
+        sm="6"
       >
         <v-card
           class="d-flex flex-column align-center justify-center  pa-4 fill-height"
