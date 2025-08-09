@@ -1,44 +1,57 @@
 <template>
-  <v-container class="text-center py-8" max-width="1230px">
-    <h1 class="text-h3 font-weight-bold gradient-text">My Journey 🚀</h1>
-    <p class="text-h5  mt-2">
-      This journey represents my professional growth and the milestones I've achieved over the years. Each year marks a significant step in my career, showcasing my dedication to continuous learning and improvement.
-    </p>
-  </v-container>
-  <v-divider class="ma-8" />
-  <v-timeline align="start">
-    <v-timeline-item
-      v-for="(year, i) in years"
-      :key="i"
-      class="my-12"
-      size="small"
-    >
-      <template #opposite>
-        <div
-          :class="`pt-1 headline font-weight-bold  text-${i % 2 === 0 ? 'right' : 'left'} text-h6`"
-          v-text="year.year"
-        />
-      </template>
+  <v-container class="py-8" max-width="900">
+    <h1 class="text-h5 text-center mb-4">My Journey 🚀</h1>
 
-      <v-card
-        class="timeline-item pa-4 mb-6"
-        rounded="lg"
+    <!-- Make the line & dots explicit so they don't disappear on dark bg -->
+    <v-timeline
+      align="start"
+      density="comfortable"
+      line-color="teal"
+      line-inset="12"
+      :side="smAndUp ? 'both' : undefined"
+    >
+      <v-timeline-item
+        v-for="(y, i) in years"
+        :key="i"
+        dot-color="teal"
+        fill-dot
+        size="small"
       >
-        <div :class="`text-${i % 2 === 0 ? 'left' : 'right'}`">
-          <h2 class="mt-n1 headline font-weight-light mb-4">
-            {{ year.description }}
-          </h2>
-          <div>
-            {{ year.place }}
+        <!-- Only show 'opposite' when side='both' -->
+        <template v-if="smAndUp" #opposite>
+          <div class="text-subtitle-1 font-weight-bold">
+            {{ y.year }}
+          </div>
+        </template>
+
+        <div class="pa-6 mt-6" rounded="lg">
+          <!-- On mobile, show year inside thdiv -->
+          <v-chip
+            v-if="!smAndUp"
+            class="mb-2"
+            color="teal"
+            label
+            size="small"
+          >
+            {{ y.year }}
+          </v-chip>
+
+          <div class="text-body-1 mb-2">
+            {{ y.description }}
+          </div>
+          <div class="text-medium-emphasis">
+            {{ y.place }}
           </div>
         </div>
-      </v-card>
-    </v-timeline-item>
-  </v-timeline>
-  <v-divider class="ma-8" />
+      </v-timeline-item>
+    </v-timeline>
+  </v-container>
 </template>
 
 <script setup lang="ts">
+  import { useDisplay } from 'vuetify'
+  const { smAndUp } = useDisplay()
+
   const years = [
     {
       description: 'Graduated with a degree in Information Technology, Bachelor of Science in Information Technology',
@@ -68,15 +81,3 @@
     },
   ]
 </script>
-
-<style scoped>
-  .timeline-item {
-    background: linear-gradient(
-      185deg,
-      rgba(40, 40, 40, 1),       /* matte dark grey */
-      rgba(0, 162, 140, 0.1),    /* soft teal hint */
-      rgba(25, 25, 25, 1)        /* deep matte base */
-    );
-    max-width: 570px;
-  }
-  </style>

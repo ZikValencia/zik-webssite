@@ -11,8 +11,9 @@
             class="glow-image"
             cover
             height="auto"
+            max-width="100%"
+            :min-width="$vuetify.display.smAndUp ? 500 : 300"
             src="@/assets/image/self.png"
-            width="500"
           />
         </div>
       </v-col>

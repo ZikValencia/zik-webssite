@@ -1,9 +1,8 @@
 <template>
   <v-main>
-
+    <Header />
     <v-container class="main-container" fluid>
-      <v-card class="pa-6" padding="10">
-        <Header />
+      <v-card>
         <router-view class="main-container " />
       </v-card>
 
