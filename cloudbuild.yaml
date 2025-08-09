@@ -1,6 +1,4 @@
-# Version of Cloud Build
 steps:
-  # Step 1: Install pnpm globally
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'bash'
     args:
@@ -15,21 +13,17 @@ steps:
         echo "pnpm version:"
         pnpm -v
         echo "Installing dependencies..."
-        cd $DIR
         pnpm install
 
-  # Step 2: Build the application
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
         echo "Building the application..."
-        cd $DIR
         pnpm run build
         echo "Build completed"
 
-  # Step 3: Deploy the files to Google Cloud Storage
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args:
       - 'gsutil'
@@ -37,8 +31,10 @@ steps:
       - 'rsync'
       - '-r'
       - 'dist/'
-      - 'gs://zikvalencia.com'
+      - 'gs://zikvalencia.com/'
 
-
-# Timeout configuration (Optional)
 timeout: '1200s'
+
+# Use Cloud Logging Only
+options:
+  logging: CLOUD_LOGGING_ONLY
