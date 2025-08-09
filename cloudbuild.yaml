@@ -1,5 +1,6 @@
+# Version of Cloud Build
 steps:
-  # Step 1: Install pnpm globally and install dependencies
+  # Step 1: Install pnpm globally
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'bash'
     args:
@@ -15,7 +16,7 @@ steps:
         pnpm -v
         echo "Installing dependencies..."
         cd $DIR
-        pnpm install  # Make sure dependencies are installed
+        pnpm install
 
   # Step 2: Build the application
   - name: 'gcr.io/cloud-builders/npm'
@@ -24,8 +25,8 @@ steps:
       - '-c'
       - |
         echo "Building the application..."
-        cd $DIR  # Navigate to the directory where your project is
-        pnpm run build  # This will run the build script in package.json
+        cd $DIR
+        pnpm run build
         echo "Build completed"
 
   # Step 3: Deploy the files to Google Cloud Storage
@@ -35,12 +36,9 @@ steps:
       - '-m'
       - 'rsync'
       - '-r'
-      - 'dist/'  # Adjust if your build folder is not 'dist'
-      - 'gs://zikvalencia.com/'  # Your GCS bucket
+      - 'dist/'
+      - 'gs://zikvalencia.com'
+
 
 # Timeout configuration (Optional)
 timeout: '1200s'
-
-# Logging configuration (Optional, Cloud Logging only)
-options:
-  logging: CLOUD_LOGGING_ONLY  # Log to Cloud Logging only
