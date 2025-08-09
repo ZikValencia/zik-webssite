@@ -1,4 +1,5 @@
 steps:
+  # Step 1: Install pnpm globally and install dependencies
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'bash'
     args:
@@ -9,31 +10,37 @@ steps:
         echo "NPM version:"
         npm -v
         echo "Installing pnpm globally..."
-        npm install -g pnpm
+        npm install -g pnpm  # Install pnpm globally
         echo "pnpm version:"
-        pnpm -v
+        pnpm -v  # Verify pnpm version
         echo "Installing dependencies..."
-        pnpm install
+        pnpm install  # Install dependencies with pnpm
 
+  # Step 2: Build the application and generate dist/
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
         echo "Building the application..."
-        pnpm run build
+        npm install -g pnpm  # Ensure pnpm is available in this step
+        pnpm run build-only  # This should generate the dist/ directory
         echo "Build completed"
+        ls -la  # List files in the root directory to check if dist/ exists
+        echo "Listing contents of dist directory:"
+        ls -la dist/  # Check if dist/ is created after build
 
+  # Step 3: Deploy the files to Google Cloud Storage
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args:
       - 'gsutil'
       - '-m'
       - 'rsync'
       - '-r'
-      - 'gs://zikvalencia.com'
+      - './dist/'  # Ensure correct path to dist folder
+      - 'gs://www.zikvalencia.com'  # Your GCS bucket name
 
 timeout: '1200s'
 
-# Use Cloud Logging Only
 options:
   logging: CLOUD_LOGGING_ONLY
