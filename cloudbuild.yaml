@@ -30,7 +30,7 @@ steps:
       - '-m'
       - 'rsync'
       - '-r'
-      - 'gs://zikvalencia.com/'
+      - 'gs://zikvalencia.com'
 
 timeout: '1200s'
 
